@@ -1,0 +1,52 @@
+#开发环境
+server:
+  port: 8050
+mybatis-plus:
+  global-config:
+    db-config: #数据库相关配置
+      id-type: id_worker #id 自动配置
+  mapper-locations: classpath:/mapper/*.xml #配置所有为mapper接口的xml文件
+spring:
+  datasource:
+    # 配置数据源
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mybatis_plus?useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 1234
+    # 使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    druid:
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+logging:
+  level:
+    root: warn #日志级别(演示使用无关紧要的这里无需输出)
+    com.dk.mapper: trace # 日志中最低级别,比debug模式更低级的模式(mybatis中很多日志是这个级别,debug是看不到的)
+  pattern:
+    console: '%p%m%n' #控制台输出日志内容  %m:内容  %n 换行
+#  config-location: classpath:sqlMapConfig.xml
+# dubbo注册中心 dubbo服务 引用接口
+dubbo:
+  application:
+    name: mybatisplus_books
+  registry:
+    address: 127.0.0.1:2181
+    protocol: zookeeper
+  protocol:
+    name: dubbo
+    port: 20850
+

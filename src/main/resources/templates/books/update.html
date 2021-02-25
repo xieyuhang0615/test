@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="common/common :: commonjs"></div>
+</head>
+<script>
+    $(function () {
+        $("#dataId").click(function () {
+            WdatePicker({dateFmt: "yyyy-MM-dd HH:mm:ss"})
+        })
+    })
+</script>
+<body>
+<form id="updateForm">
+    <input type="hidden" name="id" th:value="${books.id}">
+    作者: <input type="text" name="bookAuthor" th:value="${books.bookAuthor}" ><br>
+    图书名: <input type="text" name="bookName" th:value="${books.bookName}"  ><br>
+<!--    出书时间:<input type="text" id="dataId" name="launchTime" th:value="${books.launchTime}" th:text="*{#dates.format(birth,'yyyy-MM-dd')}" onclick="WdatePicker()" ><br>-->
+</select>
+</form>
+</body>
+</html>

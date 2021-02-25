@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="common/common :: commonjs"></div>
+</head>
+<script>
+    $(function () {
+        $("#dataId").click(function () {
+            WdatePicker({dateFmt: "yyyy-MM-dd HH:mm:ss"})
+        })
+    })
+</script>
+<body>
+    <form id="addForm">
+        作者: <input name="bookAuthor"><br>
+<!--        上架时间:<input  type="text" id="dataId" onclick="WdatePicker()" name="launchTime"><br>-->
+        图书名:<input name="bookName"><br>
+    </form>
+</body>
+</html>
